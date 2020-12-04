@@ -1,8 +1,8 @@
 import React from "react"
 
-function SearchBar() {
+function SearchBar({handleEmployeeSearch}) {
     return(
-        <input type="text" placeholder="Search"></input>
+        <input type="text" placeholder="Search" onChange={e => handleEmployeeSearch(e)}></input>
     )
 }
 
