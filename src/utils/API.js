@@ -1,7 +1,10 @@
+import React from "react"
 import axios from "axios"
 
-export default {
-    getUsers: function() {
+const API = {
+    Employees: function() {
         return axios.get("https://randomuser.me/api/?results=200&nat=us")
     }
 }
+
+export default API
