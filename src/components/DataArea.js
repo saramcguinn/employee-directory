@@ -23,6 +23,14 @@ class DataArea extends Component {
 
     handleEmployeeSearch = (event) => {
         console.log(event.target.value)
+        const input = event.target.value;
+        const filteredEmployees = this.state.employees.filter(employee => {
+            let values = Object.values(employee).join("").toLowerCase();
+            return values.indexOf(input.toLowerCase()) !== -1;
+        })
+        this.setState({
+            sortedEmployees : filteredEmployees
+        })
     }
 
     render() {

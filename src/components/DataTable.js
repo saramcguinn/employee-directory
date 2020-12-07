@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table"
 import TableRow from "./TableRow"
 
 function DataTable({employees}) {
-    // console.log(props)
+    console.log(employees)
     return (
         <div>
             <Table striped bordered hover>
