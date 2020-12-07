@@ -33,11 +33,50 @@ class DataArea extends Component {
         })
     }
 
+    alphabetize = (heading) => {
+        if (this.state.sortOrder === "descending") {
+            this.setState({
+                sortOrder: "ascending"
+            })
+        } else {
+            this.setState({
+                sortOrder: "descending"
+            })
+        }
+
+        const compare = (a, b) => {
+            if (this.state.sortOrder === "ascending") {
+                if (a[heading] === undefined) {
+                    return 1
+                } else if (b[heading] === undefined) {
+                    return -1
+                } else if (heading === "name") {
+                    return a[heading].first.localeCompare(b[heading].first)
+                } else {
+                    return a[heading] - b[heading]
+                }        
+            } else {
+                if (a[heading] === undefined) {
+                    return 1
+                } else if (b[heading] === undefined) {
+                    return -1
+                } else if (heading === "name") {
+                    return b[heading].first.localeCompare(a[heading].first)
+                } else {
+                    return b[heading] - a[heading]
+                }
+            }
+        }
+
+        const alphabetizedEmployees = this.state.sortedEmployees.alphabetize(compare);
+        this.setState({sortedEmployees : alphabetizedEmployees})
+    }
+
     render() {
         return (
             <div>
                 <SearchBar handleEmployeeSearch={this.handleEmployeeSearch} />
-                <DataTable employees={this.state.sortedEmployees}/>
+                <DataTable employees={this.state.sortedEmployees} alphabetize={this.alphabetize}/>
             </div>
         )
     }

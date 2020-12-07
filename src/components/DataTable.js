@@ -2,7 +2,7 @@ import React from "react";
 import Table from "react-bootstrap/Table"
 import TableRow from "./TableRow"
 
-function DataTable({employees}) {
+function DataTable({employees, alphabetize}) {
     console.log(employees)
     return (
         <div>
@@ -10,7 +10,7 @@ function DataTable({employees}) {
                 <thead>
                     <tr>
                         <th>Photo</th>
-                        <th>Name</th>
+                        <th onClick={() => alphabetize(employees)}>Name</th>
                         <th>Phone Number</th>
                         <th>Email</th>
                         <th>DOB</th>
